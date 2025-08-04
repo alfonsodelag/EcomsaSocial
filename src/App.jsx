@@ -6,6 +6,8 @@ import Clients from './pages/Clients'
 import Projects from './pages/Projects'
 import Learning from './pages/Learning'
 import Profile from './pages/Profile'
+import Login from './pages/Login'
+import SignUp from './pages/SignUp'
 import './App.css'
 
 export default function App() {
@@ -20,6 +22,8 @@ export default function App() {
           <Route path="/projects" element={<Projects />} />
           <Route path="/learning" element={<Learning />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
         </Routes>
       </div>
     </div>
