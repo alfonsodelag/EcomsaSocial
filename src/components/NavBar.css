@@ -52,3 +52,43 @@
     width: 100%;
   }
 }
+
+.search-bar {
+  position: relative;
+  margin-right: 1rem;
+}
+
+.search-bar input {
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  border: none;
+  width: 200px;
+}
+
+.search-results {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  color: #000;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  border: 1px solid #ccc;
+  z-index: 1000;
+}
+
+.search-result-item {
+  padding: 0.5rem;
+  border-bottom: 1px solid #eee;
+}
+
+.search-result-item:last-child {
+  border-bottom: none;
+}
+
+.result-type {
+  font-size: 0.8rem;
+  color: #555;
+}
