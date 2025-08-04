@@ -13,7 +13,15 @@ export function AuthProvider({ children }) {
 
   function signup(name, email, password) {
     const users = JSON.parse(localStorage.getItem('users') || '[]')
-    const newUser = { name, email, password }
+    const newUser = {
+      name,
+      email,
+      password,
+      age: '',
+      position: '',
+      bio: '',
+      photo: '',
+    }
     users.push(newUser)
     localStorage.setItem('users', JSON.stringify(users))
     localStorage.setItem('currentUser', JSON.stringify(newUser))
@@ -38,8 +46,22 @@ export function AuthProvider({ children }) {
     setUser(null)
   }
 
+  function updateProfile(updates) {
+    setUser(prev => {
+      const updated = { ...prev, ...updates }
+      localStorage.setItem('currentUser', JSON.stringify(updated))
+      const users = JSON.parse(localStorage.getItem('users') || '[]')
+      const index = users.findIndex(u => u.email === updated.email)
+      if (index !== -1) {
+        users[index] = updated
+        localStorage.setItem('users', JSON.stringify(users))
+      }
+      return updated
+    })
+  }
+
   return (
-    <AuthContext.Provider value={{ user, signup, login, logout }}>
+    <AuthContext.Provider value={{ user, signup, login, logout, updateProfile }}>
       {children}
     </AuthContext.Provider>
   )
